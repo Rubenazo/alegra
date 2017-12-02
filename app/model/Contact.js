@@ -29,5 +29,18 @@ Ext.define('Alegra.model.Contact', {
         fax:            { type: 'length', max: 45 },
         mobile:         { type: 'length', max: 45 },
         observations:   { type: 'length', max: 500 }
+    },
+
+    proxy: {
+		type: 'rest',
+		url: 'https://app.alegra.com/api/v1/contacts/',
+		noCache: false,
+		headers: {
+			'Authorization': 'Basic -'
+		},
+		reader: {
+			type: 'json',
+			rootProperty: 'contacts',
+		}
     }
 });
