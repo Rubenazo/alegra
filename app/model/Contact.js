@@ -36,11 +36,11 @@ Ext.define('Alegra.model.Contact', {
 		url: 'https://app.alegra.com/api/v1/contacts/',
 		noCache: false,
 		headers: {
-			'Authorization': 'Basic -'
+			'Authorization': Alegra.Constants.APIKEY
 		},
 		reader: {
 			type: 'json',
-			rootProperty: 'contacts',
+			rootProperty: 'contacts'
 		}
     }
 });

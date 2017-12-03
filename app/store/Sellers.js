@@ -4,16 +4,5 @@ Ext.define('Alegra.store.Sellers', {
 
 	model: 'Alegra.model.Seller',
 
-	proxy: {
-		type: 'rest',
-		url: 'https://app.alegra.com/api/v1/sellers/',
-		headers: {
-			'Authorization': 'Basic -'
-		},
-		reader: {
-			type: 'json',
-			rootProperty: 'sellers',
-		}
-    },
 	autoLoad: true
 });

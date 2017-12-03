@@ -46,8 +46,20 @@ Ext.define('Alegra.view.contact.ContactsController', {
         if (data.client) type.push('client');
         if (data.provider) type.push('provider');
         contact.data.type = type;
-        
-        contact.save();
+
+        contact.getProxy().setUrl('http://localhost/alegra/api/public/v1/contacts');
+        contact.save({
+            success: function() {
+                Ext.Msg.alert('Listo!', 'El nuevo contacto ha sido guardado exitosamente', function() {
+                    location.reload();
+                });
+            },
+            failure: function() {
+                Ext.Msg.alert('Error', 'Ha ocurrido un error al guardar el usuario', function() {
+                    location.reload();
+                });
+            }
+        });
     },
 
     editContact: function() {
@@ -60,7 +72,14 @@ Ext.define('Alegra.view.contact.ContactsController', {
         var view = this.getView();
         var contact = Ext.create('Alegra.model.Contact', this.getViewModel().data.contact);
 
-        contact.erase();
+        contact.erase({
+            success: function() {
+                location.reload();
+            },
+            failure: function() {
+                Ext.Msg.alert('Error', 'Ha ocurrido un error al eliminar el usuario');
+            }
+        });
         view.destroy();
     },
 
