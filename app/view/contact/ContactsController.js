@@ -20,7 +20,9 @@ Ext.define('Alegra.view.contact.ContactsController', {
             xtype: 'editmodal',
             viewModel: {
                 data: {
-                    contact: record
+                    contact: record,
+                    client: Boolean(record.type.indexOf('client') != -1),
+                    provider: Boolean(record.type.indexOf('provider') != -1)
                 }
             }
         }).show();
@@ -64,11 +66,27 @@ Ext.define('Alegra.view.contact.ContactsController', {
 
     editContact: function() {
         var view = this.getView();
+        var data = this.getViewModel().data;
+        var contact = Ext.create('Alegra.model.Contact', data.contact);
+        
+        var type = [];
+        if (data.client) type.push('client');
+        if (data.provider) type.push('provider');
+        contact.data.type = type;
 
-        view.destroy();
+        contact.save({
+            success: function() {
+                Ext.Msg.alert('Listo!', 'Contacto actualizado', function() {
+                    location.reload();
+                });
+            },
+            failure: function() {
+                Ext.Msg.alert('Error', 'Ha ocurrido un error al actualizar el usuario');
+            }
+        });
     },
 
-    deleteContact: function(me) {
+    deleteContact: function() {
         var view = this.getView();
         var contact = Ext.create('Alegra.model.Contact', this.getViewModel().data.contact);
 

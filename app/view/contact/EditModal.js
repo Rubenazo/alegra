@@ -108,12 +108,12 @@ Ext.define('Alegra.view.contact.EditModal', {
                 xtype: 'checkboxfield',
                 label: 'Cliente',
                 value: 'client',
-                bind: '{contact.type}'
+                bind: '{client}'
             }, {
                 xtype: 'checkboxfield',
                 label: 'Proveedor',
                 value: 'provider',
-                bind: '{contact.type}'
+                bind: '{provider}'
             }, {
                 xtype: 'textareafield',
                 label: 'Observaciones',

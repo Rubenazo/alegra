@@ -6,7 +6,7 @@ Ext.define('Alegra.store.Contacts', {
 
 	autoLoad: true
 
-/*
+/* Datos de prueba
 	data: [
     {
         "id": "1",

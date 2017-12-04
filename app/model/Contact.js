@@ -41,6 +41,9 @@ Ext.define('Alegra.model.Contact', {
 		reader: {
 			type: 'json',
 			rootProperty: 'contacts'
+		},
+		writer: { 
+			writeAllFields: true
 		}
     }
 });
