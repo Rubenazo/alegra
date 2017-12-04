@@ -7,5 +7,6 @@ Ext.application({
 
     requires: [
     	'Alegra.*',
+    	'Ext.data.proxy.Rest'
     ],
 });
